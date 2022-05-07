@@ -45,7 +45,7 @@ def main():
 
     # DO NOT REMOVE the 'Recommender System' option below, however,
     # you are welcome to add more options to enrich your app.
-    page_options = ["Recommender System","Solution Overview"]
+    page_options = ["Recommender System","Introduction","Solution Overview", "About Company", "Explorative Data Analysis"]
 
     # -------------------------------------------------------------------
     # ----------- !! THIS CODE MUST NOT BE ALTERED !! -------------------
@@ -78,9 +78,10 @@ def main():
                     st.title("We think you'll like:")
                     for i,j in enumerate(top_recommendations):
                         st.subheader(str(i+1)+'. '+j)
-                except:
+                except Exception as e:
                     st.error("Oops! Looks like this algorithm does't work.\
                               We'll need to fix it!")
+                    print(e, traceback.format_exc())
 
 
         if sys == 'Collaborative Based Filtering':
@@ -100,6 +101,49 @@ def main():
     # -------------------------------------------------------------------
 
     # ------------- SAFE FOR ALTERING/EXTENSION -------------------
+    if page_selection ==  "Introduction":
+        st.title("Introduction")
+        st.write("In today’s technology driven world, recommender systems are socially and economically critical to \
+            ensure that individuals can make optimised choices surrounding the content they engage with on a daily \
+            basis. One application where this is especially true is movie recommendations; where intelligent algorithms\
+             can help viewers find great titles from tens of thousands of options.With this context, EDSA has consulted\
+              EDKO Consultings(2110ACDS_T14) to construct a recommendation algorithm based on content or collaborative \
+              filtering, capable of accurately predicting how a user will rate a movie they have not yet viewed, based\
+               on their historical preferences.Providing an accurate and robust solution to this challenge has immense \
+               economic potential, with users of the system being personalised recommendations - generating platform \
+               affinity for the streaming services which best facilitates their audience's viewing.A recommender system \
+               functions by predicting a user's rating or preference for an item. This allows a service provider to build\
+                up a catalog of items which it believes the user will want to examine - thereby increasing their engagement with the service and allowing a wider array of content to be considered.")
+    if page_selection == "About Company":
+        st.title("About Us")
+        st.write("EDKO Consulting is an Information Technology Company whose focus is on delivering superior value to our clients on Data Science services.")
+        st.write("We provide a human and machine powered solution for extracting knowledge from data. Our solutions are used by our clients to uncover insights from their data and empower their business teams to make data driven decisions.")
+    if page_selection == "Explorative Data Analysis":
+        st.title("Explorative Data Analysis")
+        st.info("Lets us explore the data used in training our model")
+        # You can read a markdown file from supporting resources folder
+        # looked at the classes
+        st.write("Genre Distribution")
+        st.image('resources/imgs/movie_genre_dist.jpg')
+
+        st.write("Top 10 User Number of Ratings")
+        st.image('resources/imgs/genre_dist.jpg')
+
+        st.write("Top 10 Number of Ratings")
+        st.image('resources/imgs/top_10_number_of_ratings.jpg')
+
+        st.write("Top 10 Director Ratings")
+        st.image('resources/imgs/top_ten_director_ratings.jpg')
+
+        st.write("T Distributed Stochastic Graph")
+        st.image('resources/imgs/T_distributed_stoch.jpg')
+
+        st.write("Rating Analysis")
+        st.image('resources/imgs/rating_analysis.jpg')
+
+        st.write("PCA Analysis")
+        st.image('resources/imgs/pca_analysis.jpg')
+
     if page_selection == "Solution Overview":
         st.title("Solution Overview")
         st.write("Describe your winning approach on this page")
